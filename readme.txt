@@ -5,8 +5,7 @@ Requires at least: 2.3
 Tested up to: 2.8.4
 Stable tag: 1.2
 
-=EN:=Automatic plugin distributing advertising links between users blogs.
-=PL:=Automatyczna wtyczka wymiany linków reklamowych w postach pomiędzy blogami użytkowników.
+Automatic SEO plugin distributing contextual advertising links between users blog posts.
 
 == Description ==
 = EN: =
@@ -24,10 +23,10 @@ wybierz kategorię tematyczną swojego bloga i aktywuj wtyczkę
 5. Na stronie http://wpbooster.pl/wp-admin/ możesz oglądać przyrost linków reklamowych.
 
 == Frequently Asked Questions ==
-EN:
+= EN: =
 = When you are going to publish World wide version of plugin? =
 World wide version of plugin will be released within 3 to 6 months.
-PL:
+= PL: =
 = Kiedy zobaczę pierwsze reklamy mojego bloga? =
 Pierwsze efekty działania wtyczki będą widoczne po około 24 godzinach od aktywacji
 
@@ -38,7 +37,7 @@ Brak
 == Changelog ==
 = 1.1 =
 * First public release
-= 1.2 = 
+= 1.2 =
 * Fully tested plugin open to public (we made 1.1 available only for testers)
 * Contextual matching improvement
-* code optimisation for better script performance
+* Code optimisation for better script performance
