@@ -4,7 +4,7 @@ Plugin Name: SEO WPBooster
 Plugin URI: http://wpbooster.pl/
 Description: Automatyczna wtyczka wymiany reklamy w postach pomiędzy blogami użytkowników.
 Author: WPBooster Development Team
-Version: 1.2
+Version: 1.3
 Author URI: http://wpbooster.pl/
 */
 
@@ -24,7 +24,7 @@ function wpb_main() {
     global $wp_booster_magic_key;
     $idbloga = $klient->call('czyjestwsystemie', array('adresbloga' => get_bloginfo('url')));
     if (isset($idbloga)) {
-		$maxid_from_blog = $klient->call('maxpostid', array('blogid' => $idbloga, 'v' => '12'));
+		$maxid_from_blog = $klient->call('maxpostid', array('blogid' => $idbloga, 'v' => '13'));
         $posty = $wpdb->get_results("SELECT post_content, id, post_name, post_date FROM $wpdb->posts WHERE post_status = 'publish' AND post_type = 'post' AND id > $maxid_from_blog AND LENGTH(post_content) > 100 LIMIT 0,100 ");
         $czy_zapisal_date_pierwszego = '0';
         foreach ($posty as $post) {
