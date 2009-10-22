@@ -51,19 +51,20 @@ function links_from_wpb() {
     global $klient;
     $PostId = $wp_query->post->ID;
     $idbloga = $klient->call('czyjestwsystemie', array('adresbloga' => get_bloginfo('url')));
-    return $klient->call('getlinks', array('postid' => $PostId, 'blogid' => $idbloga));
+	$encoded = $klient->call('getlinks', array('postid' => $PostId, 'blogid' => $idbloga));
+	return base64_decode($encoded);
 }
 
 $is_link_in_loop = $klient->call('linkinloop_check', array('url' => get_bloginfo('url')));
 
 function wpb_getlinks() {
     global $is_link_in_loop;
-    if ($is_link_in_loop == '0') return links_from_wpb();
+    if ( ($is_link_in_loop == '0') && (is_single()) ) return links_from_wpb();
 }
 
 function link_in_loop($content) {
     global $is_link_in_loop;
-    if ($is_link_in_loop == '1') $dodane = links_from_wpb();
+    if ( ($is_link_in_loop == '1') && (is_single()) ) $dodane = links_from_wpb();
     return $content.$dodane;
 }
 

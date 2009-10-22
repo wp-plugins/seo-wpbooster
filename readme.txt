@@ -1,9 +1,9 @@
-=== SEO WPBooster ===
+﻿=== SEO WPBooster ===
 Contributors: wpbooster
 Tags: seo, linkbuilding, link exchange, wymiana linków, pozycjonowanie
 Requires at least: 2.3
-Tested up to: 2.8.4
-Stable tag: 1.2
+Tested up to: 2.8.5
+Stable tag: 1.3
 
 Automatic SEO plugin distributing contextual advertising links between users blog posts.
 
@@ -35,9 +35,14 @@ None
 Brak
 
 == Changelog ==
-= 1.1 =
-* First public release
+= 1.3 =
+* Added function checking plugin's activity 
+* Fixed code responsible for display of links 
 = 1.2 =
 * Fully tested plugin open to public (we made 1.1 available only for testers)
 * Contextual matching improvement
 * Code optimisation for better script performance
+= 1.1 =
+* First public release
+
+ 
