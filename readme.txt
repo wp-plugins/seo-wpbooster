@@ -2,8 +2,8 @@
 Contributors: wpbooster
 Tags: seo, linkbuilding, link exchange, wymiana linków, pozycjonowanie
 Requires at least: 2.3
-Tested up to: 2.8.5
-Stable tag: 1.3
+Tested up to: 2.9.1
+Stable tag: 1.4
 
 Automatic SEO plugin distributing contextual advertising links between users blog posts.
 
@@ -31,10 +31,15 @@ World wide version of plugin will be released within 3 to 6 months.
 Pierwsze efekty działania wtyczki będą widoczne po około 24 godzinach od aktywacji
 
 == Screenshots ==
-None
-Brak
+See plugin website to learn more
 
 == Changelog ==
+= 1.4 =
+* Cache for outlinks added 
+* Default blog category in wp-admin deleted
+* Improved stability
+* Several functions previously carried out on the blog moved to system side
+* System engine modified to support links sales
 = 1.3 =
 * Added function checking plugin's activity 
 * Fixed code responsible for display of links 
@@ -44,5 +49,3 @@ Brak
 * Code optimisation for better script performance
 = 1.1 =
 * First public release
-
- 

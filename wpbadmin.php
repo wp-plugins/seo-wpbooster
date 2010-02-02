@@ -7,19 +7,22 @@ global $klient;
 echo '<div class="wrap">';
 if ($_POST['mode'] == 'linkinloop') {
 	echo '<div id="message" class="updated fade"><p>Zapisano zmianę ustawień wyświetlania linków z systemu</p></div>';
-	$link_in_loop_change = $klient->call('linkinloop_change', array('url' => get_bloginfo('url'),'value' => $_POST['linkinloopval']));
+	update_option('wpbooster_linkinloop', $_POST['linkinloopval']);
+	$klient->call('linkinloop_change', array('url' => get_bloginfo('url'),'value' => $_POST['linkinloopval']));
 }
 elseif ($_POST['mode'] == 'addblog') {
-	$addvalid = $klient->call('addblog', array('user' => $_POST['user'], 'pass' => $_POST['pass'], 'domain' => get_bloginfo('url'), 'cat' => $_POST['category']));
-	if ($addvalid == '0') echo '<div id="message" class="updated fade"><p>podane dane są nieprawidłowe!</p></div>';
-	if ($addvalid == '1') echo '<div id="message" class="updated fade"><p>blog został dodany do systemu</p></div>';
+	if ($_POST['category'] == '0') echo '<div id="message" class="updated fade"><p>Proszę wybrać kategorię</p></div>';
+	else {
+		$addvalid = $klient->call('addblog', array('user' => $_POST['user'], 'pass' => $_POST['pass'], 'domain' => get_bloginfo('url'), 'cat' => $_POST['category']));
+		if ($addvalid == '0') echo '<div id="message" class="updated fade"><p>Podane dane są nieprawidłowe!</p></div>';
+		if ($addvalid == '1') echo '<div id="message" class="updated fade"><p>Blog został dodany do systemu</p></div>';
+	}
 }
 $odpowiedz = $klient->call('czyjestwsystemie', array('adresbloga' => get_bloginfo('url')));
 if (!empty($odpowiedz)) {
 	echo '<br />Blog znajduje się w systemie WPBooster.';
 	echo '<br /><br />';
-	$is_link_in_loop = $klient->call('linkinloop_check', array('url' => get_bloginfo('url')));
-	if ($is_link_in_loop == '1') {
+	if (get_option('wpbooster_linkinloop') == '1') {
 		echo 'Linki z systemu pojawiają się teraz automatycznie w każdym poście.';
 		echo '<form name="put_definiction" method="post" action="options-general.php?page=seo-wpbooster/wpbadmin.php">
 		<input type="hidden" value="linkinloop" name="mode" />
@@ -41,15 +44,16 @@ if (!empty($odpowiedz)) {
 	echo '<br>Możesz zdefiniować jego wygląd w arkuszu stylu pisząc:<br>div#'.$divname.' {<br />...<br />}<br />';
 }
 else {
-	echo '<br />Bloga nie ma w systemie WPBooster. Podaj swoją nazwę użytkownika i hasło aby dodać bloga do systemu.<br>';
-	echo '<form name="put_definiction" method="post" action="options-general.php?page=seo-wpbooster/wpbadmin.php">
+	echo '<br />Bloga nie ma w systemie WPBooster. Podaj swoją nazwę użytkownika i hasło aby dodać bloga do systemu.<br />
+	<form name="put_definiction" method="post" action="options-general.php?page=seo-wpbooster/wpbadmin.php">
 	<input type="text" style="border: 1px solid rgb(0, 0, 0); width: 175px; background-color: rgb(247, 247, 247); margin-top: 5px;" value="" name="user" />
 	(nazwa uzytkownika)<br/>
 	<input type="password" style="border: 1px solid rgb(0, 0, 0); width: 175px; background-color: rgb(247, 247, 247); margin-top: 5px;" value="" name="pass" />
 	(haslo)<br/>';
-	$listakategorii = $klient->call('getcategory', array('yyyy' => 'yyyy')); //sprawdza czy blog jest w systemie
+	$listakategorii = $klient->call('getcategory', array('yyyy' => 'yyyy'));
 	$caty = explode('|', substr($listakategorii, 1));
-	echo '<br />Wybierz kategorię bloga:<br /><select name="category">';
+	echo '<br /><select name="category">
+	<option value="0" selected="selected">Wybierz kategorię bloga</option>';
 	foreach ($caty as $onecat) {
 	    $kawalek = explode('.', $onecat);
 	    echo '<option value="'.$kawalek[0].'">'.$kawalek[1].'</option>';
