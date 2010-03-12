@@ -19,6 +19,6 @@ if ( ($_GET['last'] == '0') || ($_GET['last']) ) {
 		$m_title = trim(str_replace(array('"', '`', "'"), '', strip_tags(get_the_title($post->id))));
 		$return_posts[] = array($post->id, $content_regexp, get_permalink($post->id), $m_title, $post->post_date);
 	}
-	echo base64_encode(serialize($return_posts));
+	echo '|wpbooster|'.base64_encode(serialize($return_posts)).'|wpbooster|';
 }
 ?>
