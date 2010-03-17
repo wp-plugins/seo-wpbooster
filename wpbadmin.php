@@ -64,6 +64,12 @@ function konfigurator_wtyczki_wpbooster() {
 		<input type="submit" style="border: 1px solid rgb(0, 0, 0); cursor: pointer; background-color: rgb(247, 247, 247); margin-top: 5px;" value=" &nbsp; Dodaj blog do systemu &nbsp; " name="mode_log"/>
 		</form>';
 	}
+	else {
+		echo '<br />Błąd wymiany danych pomiędzy wtyczką i systemem.<br />
+		|'.$issetblog.'|<br />
+		Prosimy o kontakt z administracją systemu wpbooster. Prosimy do wiadomości załączyć kopię lub screen tej strony.<br />
+		Przepraszamy za utrudnienia.<br />';
+	}
 	echo '</div>';
 }
 ?>
