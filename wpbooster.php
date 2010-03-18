@@ -12,7 +12,7 @@ include('wpbadmin.php');
 
 if(!get_option('wpbooster_linkinloop')) {
 	$data = urlencode(base64_encode(get_bloginfo('url')));
-	$link_in_loop = file_get_contents('http://wpbooster.pl/swlserwer/wpadmin/linkinloop_check.php?blogurl='.$data);
+	$link_in_loop = wpb_file_get_contents('http://wpbooster.pl/swlserwer/wpadmin/linkinloop_check.php?blogurl='.$data);
 	add_option('wpbooster_linkinloop', $link_in_loop);
 }
 
