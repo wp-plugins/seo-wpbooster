@@ -1,5 +1,4 @@
 <?
-
 $lang_tab_pl['save_view'] = 'Zapisano zmianę ustawień wyświetlania linków z systemu';
 $lang_tab_pl['blog_add_true'] = 'Blog został dodany do systemu';
 $lang_tab_pl['blog_in_system'] = 'Blog znajduje się w systemie WPBooster.';
@@ -10,7 +9,6 @@ $lang_tab_pl['view_links_manual'] = 'Linki z systemu możesz teraz ręcznie umie
 $lang_tab_pl['wpbooster_link_true'] = 'Jeśli chcesz żeby linki z systemu WPbooster ukazały się na Twoim blogu wklej w dowolnym miejscu szablonu (prócz pętli) kod:<br />&lt;?php echo wpb_getlinks(); ?&gt;';
 $lang_tab_pl['div_info1'] = 'Kontener, w którym znajdują się linki z systemu ma id = "';
 $lang_tab_pl['div_info2'] = 'Możesz zdefiniować jego wygląd w arkuszu stylu pisząc:';
-
 
 $lang_tab_en['save_view'] = 'Zapisano zmianę ustawień wyświetlania linków z systemu';
 $lang_tab_en['blog_add_true'] = 'Blog został dodany do systemu';
@@ -23,35 +21,24 @@ $lang_tab_en['wpbooster_link_true'] = 'Jeśli chcesz żeby linki z systemu WPboo
 $lang_tab_en['div_info1'] = 'Kontener, w którym znajdują się linki z systemu ma id = "';
 $lang_tab_en['div_info2'] = 'Możesz zdefiniować jego wygląd w arkuszu stylu pisząc:';
 
-
-
 $lang_tab_pl['not_active_yet'] = 'Plugin <b>WPBooster</b> jest nieaktywny. Musisz go najpierw skonfigurować!';
 $lang_tab_en['not_active_yet'] = '<b>WPBooster</b> plugin is not active yet. You have to set it up first!';
-
 $lang_tab_pl['step_two'] = 'Krok 2 z 2<br />Dane użytkownika i bloga';
 $lang_tab_en['step_two'] = 'Step 2 of 2<br />User and blog details';
-
 $lang_tab_pl['no_blog'] = 'Wypełnij poniższe pola nazwą użytkownika i hasłem z <a href="http://wpbooster.pl/" target="_blank">WPBooster.pl</a>. Jeśli nie masz jeszcze konta, <a href="http://wpbooster.pl/wp-login.php?action=register" target="_blank">zarejestruj się</a>.';
 $lang_tab_en['no_blog'] = 'Fill out forms below with <a href="http://wpbooster.com/" target="_blank">WPBooster.com</a> username and password. If you don\'t have account, <a href="http://wpbooster.com/wp-login.php?action=register" target="_blank">register one here</a>.';
-
 $lang_tab_pl['username'] = 'Użytkownik: ';
 $lang_tab_en['username'] = 'Username: ';
-
 $lang_tab_pl['password'] = 'Hasło: ';
 $lang_tab_en['password'] = 'Password: ';
-
 $lang_tab_pl['please_select'] = 'Proszę wybrać kategorię';
 $lang_tab_en['please_select'] = 'Please select a category';
-
 $lang_tab_pl['select_category'] = 'Wybierz kategorię';
 $lang_tab_en['select_category'] = 'Select category';
-
 $lang_tab_pl['blog_add'] = 'Aktywuj wtyczkę';
 $lang_tab_en['blog_add'] = 'Activate plugin';
-
 $lang_tab_pl['message_exist_domain'] = 'Inny użytkownik dodał tą domenę do systemu, jeśli Ty jesteś jej właścicielem, <a href="http://wpbooster.pl/kontakt" target="_blank">skontaktuj się z nami</a>.';
 $lang_tab_en['message_exist_domain'] = 'This domain is already connected by another member, if youre owner of this blog, please, <a href="http://wpbooster.com/contact" target="_blank">let us know</a>.';
-
 $lang_tab_pl['error_username'] = 'Nazwa użytkownika lub hasło jest nieprawidłowe! Jeśli dodałeś bloga do systemu
 <a href="http://wpbooster.com/" target="_blank">wpbooster.com</a>
 <a href="options-general.php?page=seo-wpbooster/wpbadmin.php&lang=en">zmień język na angielski</a>
@@ -60,28 +47,21 @@ $lang_tab_en['error_username'] = 'Username or password is invalid! If you have a
 <a href="http://wpbooster.pl/" target="_blank">wpbooster.pl</a> system
 <a href="options-general.php?page=seo-wpbooster/wpbadmin.php&lang=pl">change language to Polish</a>
 and once again enter your username and password in the form below.';
-
-
-
 $lang_tab_pl['error_exchange'] = 'Błąd wymiany danych pomiędzy wtyczką i systemem.';
 $lang_tab_en['error_exchange'] = 'Error with data exchange between plugin and the system.';
-
 $lang_tab_pl['fopen_off'] = 'Niestety na serwerze allow_url_fopen jest ustawione na off, a cURL nie działa.';
 $lang_tab_en['fopen_off'] = 'Unfortunately, allow_url_fopen on your server is set to off, and cURL doesn\'t work.';
-
 $lang_tab_pl['please_contact'] = 'Prosimy o kontakt z administracją systemu WPbooster. Prosimy do wiadomości załączyć kopię lub screen tej strony.<br />Przepraszamy za utrudnienia.';
 $lang_tab_en['please_contact'] = 'Please contact WPBooster system administrator and attach a copy of this message or screen of this page.<br />Sorry for the inconvenience.';
-
+$lang_tab_pl['domain'] = 'pl';
+$lang_tab_en['domain'] = 'com';
 
 if ($_GET['lang']) {
 	update_option('wpbooster_lang', $_GET['lang']);
 }
 
 if (get_option('wpbooster_lang') == 'pl') $lang_tab = $lang_tab_pl;
-elseif (get_option('wpbooster_lang') == 'en') $lang_tab = $lang_tab_en;
 else $lang_tab = $lang_tab_en;
-
-
 
 add_action( 'admin_menu', 'submenu_admina_wpbooster' );
 function wpb_file_get_contents($url) {
@@ -108,23 +88,22 @@ function konfigurator_wtyczki_wpbooster() {
 		update_option('wpbooster_linkinloop', $_POST['linkinloopval']);
 		$data_tab = array(get_bloginfo('url'), $_POST['linkinloopval']);
 		$data = urlencode(base64_encode(serialize($data_tab)));
-		wpb_file_get_contents('http://wpbooster.pl/swlserwer/wpadmin/linkinloop.php?data='.$data);
+		wpb_file_get_contents('http://wpbooster.'.$lang_tab['domain'].'/swlserwer/wpadmin/linkinloop.php?data='.$data);
 	}
 	elseif ($_POST['mode'] == 'addblog') {
 		if ($_POST['category'] == '0') echo '<div id="message" class="updated fade"><p>'.$lang_tab['please_select'].'</p></div>';
 		else {
 			$data_tab = array($_POST['user'], $_POST['pass'], get_bloginfo('url'), $_POST['category']);
 			$data = urlencode(base64_encode(serialize($data_tab)));
-			$addvalid = wpb_file_get_contents('http://wpbooster.pl/swlserwer/wpadmin/addblog.php?data='.$data);
+			$addvalid = wpb_file_get_contents('http://wpbooster.'.$lang_tab['domain'].'/swlserwer/wpadmin/addblog.php?data='.$data);
 			if ($addvalid == 'yes') echo '<div id="message" class="updated fade"><p>'.$lang_tab['blog_add_true'].'</p></div>';
 			elseif ($addvalid == 'no') echo '<div id="message" class="updated fade"><p>'.$lang_tab['error_username'].'</p></div>';
 			elseif ($addvalid == 'isset') echo '<div id="message" class="updated fade"><p>'.$lang_tab['message_exist_domain'].'</p></div>';
 		}
 	}
-
 	if ( (ini_get('allow_url_fopen') == 'on') || (function_exists('curl_init')) ) {
 		$zakodowany_url = urlencode(base64_encode(get_bloginfo('url')));
-		$issetblog = wpb_file_get_contents('http://wpbooster.pl/swlserwer/wpadmin/issetblog.php?blogurl='.$zakodowany_url);
+		$issetblog = wpb_file_get_contents('http://wpbooster.'.$lang_tab['domain'].'/swlserwer/wpadmin/issetblog.php?blogurl='.$zakodowany_url);
 		if ($issetblog == 'yes') {
 			echo '<br />'.$lang_tab['blog_in_system'].'<br /><br />';
 			if (get_option('wpbooster_linkinloop') == '1') {
@@ -144,7 +123,7 @@ function konfigurator_wtyczki_wpbooster() {
 				</form>
 				'.$lang_tab['wpbooster_link_true'].'<br />';
 			}
-			$divname = wpb_file_get_contents('http://wpbooster.pl/swlserwer/wpadmin/divname.php?blogurl='.$zakodowany_url);
+			$divname = wpb_file_get_contents('http://wpbooster.'.$lang_tab['domain'].'/swlserwer/wpadmin/divname.php?blogurl='.$zakodowany_url);
 			echo '<br />'.$lang_tab['div_info1'].$divname.'"<br />'.$lang_tab['div_info2'].'<br />div#'.$divname.' {<br />...<br />}<br />';
 		}
 		elseif ($issetblog == 'no') {
@@ -179,7 +158,7 @@ function konfigurator_wtyczki_wpbooster() {
 						</td></tr><tr><td>
 							Blog:
 						</td><td>
-							'; $listakategorii = unserialize(base64_decode(wpb_file_get_contents('http://wpbooster.pl/swlserwer/wpadmin/listcategory.php')));
+							'; $listakategorii = unserialize(base64_decode(wpb_file_get_contents('http://wpbooster.'.$lang_tab['domain'].'/swlserwer/wpadmin/listcategory.php')));
 							echo '<select name="category"><option value="0" selected="selected">'.$lang_tab['select_category'].'</option>';
 							foreach ($listakategorii as $onecat) {
 							    echo '<option value="'.$onecat[0].'">'.$onecat[1].'</option>';
