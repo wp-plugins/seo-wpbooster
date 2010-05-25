@@ -8,7 +8,7 @@ if ( ($_GET['last'] == '0') || ($_GET['last']) ) {
 		ORDER BY id
 		LIMIT 10
 	");
-	$return_posts[] = '15.10';
+	$return_posts[] = '15.11';
 	foreach ($posty as $post) {
 		$content_bez_html = strip_tags($post->post_content);
 		$badphrase = array('&gt;', '&lt;', '&nbsp;', ';', '&', '!', '?', ',', '.', '"', '\'', "\n", "\r");
