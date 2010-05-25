@@ -10,7 +10,7 @@ Author URI: http://wpbooster.pl/
 include('wpbadmin.php');
 if ( (!get_option('wpbooster_linkinloop')) && (get_option('wpbooster_lang')) ) {
 	if (get_option('wpbooster_lang') == 'pl') $domain = 'pl';
-	else (get_option('wpbooster_lang') == 'en') $domain = 'com';
+	else $domain = 'com';
 	$data = urlencode(base64_encode(get_bloginfo('url')));
 	$link_in_loop = wpb_file_get_contents('http://wpbooster.'.$domain.'/swlserwer/wpadmin/linkinloop_check.php?blogurl='.$data);
 	add_option('wpbooster_linkinloop', $link_in_loop);
